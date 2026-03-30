@@ -1190,13 +1190,25 @@ function addPlanItem() {
   var ps = getSelectedPlanSet();
   if (!ps) return;
   if (!ps.items) ps.items = [];
+  var newId = uid();
   ps.items.push({
-    id: uid(),
+    id: newId,
     content: 'New Item',
     order: ps.items.length,
     tags: []
   });
   render();
+  // 聚焦到新 item 的编辑区域
+  var newEl = document.querySelector('.plan-item-content[data-item-id="' + newId + '"]');
+  if (newEl) {
+    newEl.focus();
+    // 选中文字方便直接覆盖
+    var range = document.createRange();
+    range.selectNodeContents(newEl);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
 }
 
 // ==================== 日期分页 ====================
@@ -1487,6 +1499,20 @@ document.addEventListener('keydown', function(e) {
     closeTagDropdown();
     closeExportMenu();
     closeChangeDateModal(false);
+    return;
+  }
+  if (e.target.getAttribute('contenteditable') === 'true' || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    addPlanItem();
+  }
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    changeDate(-1);
+  }
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    changeDate(1);
   }
 });
 
