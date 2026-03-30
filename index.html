@@ -1301,6 +1301,23 @@ function addPlanItem() {
   render();
 }
 
+function addPlanItemAndFocus() {
+  var ps = getSelectedPlanSet();
+  if (!ps) return;
+  if (!ps.items) ps.items = [];
+  var newItem = {
+    id: uid(),
+    content: '',
+    order: ps.items.length,
+    tags: []
+  };
+  ps.items.push(newItem);
+  render();
+  // 渲染后聚焦新 item，清空内容让用户直接编辑
+  var el = document.querySelector('.plan-item-content[data-item-id="' + newItem.id + '"]');
+  if (el) el.focus();
+}
+
 // ==================== 日期分页 ====================
 function changeDate(offset) {
   state.currentDate = shiftDate(state.currentDate, offset);
@@ -1581,7 +1598,7 @@ function hasAnyData() {
   return Object.keys(state.dates).length > 0;
 }
 
-// ESC 关闭弹窗
+// ESC 关闭弹窗 & 全局快捷键
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     closeTagModal();
@@ -1589,6 +1606,30 @@ document.addEventListener('keydown', function(e) {
     closeTagDropdown();
     closeExportMenu();
     closeChangeDateModal(false);
+    return;
+  }
+
+  // 编辑态不拦截快捷键
+  var tag = (e.target.tagName || '').toLowerCase();
+  if (e.target.getAttribute('contenteditable') === 'true' || tag === 'input' || tag === 'textarea') return;
+
+  // Enter → 在选中 plan set 中新增 plan item
+  if (e.key === 'Enter' && state.selectedPlanSetId) {
+    e.preventDefault();
+    addPlanItemAndFocus();
+    return;
+  }
+
+  // ← → 切换日期
+  if (e.key === 'ArrowLeft') {
+    e.preventDefault();
+    changeDate(-1);
+    return;
+  }
+  if (e.key === 'ArrowRight') {
+    e.preventDefault();
+    changeDate(1);
+    return;
   }
 });
 
