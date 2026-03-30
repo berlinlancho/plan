@@ -4,12 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The gift for XiaoSheng by berlinlancho</title>
-<!-- 字体：本地文件 -->
-<style>
-@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400; src: url('dependency/Caveat-Regular.ttf') format('truetype'); font-display: block; }
-@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 600; src: url('dependency/Caveat-SemiBold.ttf') format('truetype'); font-display: block; }
-@font-face { font-family: 'Caveat'; font-style: normal; font-weight: 700; src: url('dependency/Caveat-Bold.ttf') format('truetype'); font-display: block; }
-</style>
+<!-- 字体：使用系统自带字体 -->
 <!-- JSZip: 打包ZIP文件 (本地) -->
 <script src="dependency/jszip.min.js"></script>
 <!-- html2canvas: 页面截图 (本地) -->
@@ -19,7 +14,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --font-hand: 'Caveat', cursive;
+  --font-hand: system-ui, -apple-system, 'Segoe UI', sans-serif;
   --color-ink: #2c2c2c;
   --color-paper: #fdfdf8;
   --color-border: #444;
@@ -61,8 +56,8 @@ html, body {
   border-radius: 95px 14px 130px 14px / 14px 130px 14px 95px;
   background: var(--color-paper);
   font-family: var(--font-hand);
-  font-size: 16px;
-  padding: 3px 10px;
+  font-size: 14px;
+  padding: 3px 8px;
   cursor: pointer;
   color: var(--color-ink);
   transition: background 0.2s;
@@ -86,14 +81,14 @@ html, body {
 #toolbar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   padding: 8px 12px;
   flex-shrink: 0;
   flex-wrap: nowrap;
   overflow-x: auto;
 }
 #toolbar .title {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
   margin-right: auto;
   letter-spacing: 1px;
