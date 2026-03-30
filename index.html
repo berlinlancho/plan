@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Another git for XiaoSheng by berlinlancho</title>
+<title>The gift for XiaoSheng by berlinlancho</title>
 <!-- 字体：本地文件 -->
 <style>
 @font-face { font-family: 'Caveat'; font-style: normal; font-weight: 400; src: url('dependency/Caveat-Regular.ttf') format('truetype'); }
@@ -61,11 +61,12 @@ html, body {
   border-radius: 95px 14px 130px 14px / 14px 130px 14px 95px;
   background: var(--color-paper);
   font-family: var(--font-hand);
-  font-size: 18px;
-  padding: 4px 16px;
+  font-size: 16px;
+  padding: 3px 10px;
   cursor: pointer;
   color: var(--color-ink);
   transition: background 0.2s;
+  white-space: nowrap;
 }
 .sketch-btn:hover { background: var(--color-hover); }
 .sketch-btn:disabled { color: #bbb; cursor: not-allowed; }
@@ -88,13 +89,15 @@ html, body {
   gap: 10px;
   padding: 8px 12px;
   flex-shrink: 0;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 #toolbar .title {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 700;
   margin-right: auto;
   letter-spacing: 1px;
+  white-space: nowrap;
 }
 .export-dropdown {
   position: relative;
@@ -236,6 +239,7 @@ html, body {
   gap: 4px;
   flex-shrink: 0;
   vertical-align: middle;
+  margin-left: 0.5em;
 }
 
 .tag-label {
@@ -311,6 +315,8 @@ html, body {
   gap: 12px;
   padding: 10px 12px;
   flex-shrink: 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 #date-display {
   font-family: var(--font-hand);
@@ -485,6 +491,22 @@ html, body {
   pointer-events: none;
 }
 .toast.show { opacity: 1; }
+
+/* ========== 手机端适配 ========== */
+@media screen and (max-width: 768px) {
+  #toolbar {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  #date-pagination {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+  #date-nav-btns {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
 </style>
 </head>
 <body>
@@ -492,7 +514,7 @@ html, body {
 <div id="app">
   <!-- 顶部工具栏 -->
   <div id="toolbar" class="sketch-box">
-    <span class="title">Another git for XiaoSheng by berlinlancho</span>
+    <span class="title">The gift for XiaoSheng by berlinlancho</span>
     <button id="btn-create" class="sketch-btn" onclick="handleCreate()">+ Create</button>
     <button id="btn-import" class="sketch-btn" onclick="handleImport()">Import</button>
     <input type="file" id="import-input" accept=".json" onchange="doImport(event)">
