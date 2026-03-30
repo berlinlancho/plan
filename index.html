@@ -333,6 +333,8 @@ html, body {
   -webkit-appearance: none;
   appearance: none;
 }
+#date-display::-webkit-calendar-picker-indicator { display: none; }
+#changedate-to::-webkit-calendar-picker-indicator { display: none; }
 #date-nav-btns {
   display: flex;
   gap: 6px;
@@ -512,9 +514,10 @@ html, body {
     justify-content: center;
   }
   #date-display {
-    min-width: 150px;
-    padding: 2px 30px 2px 8px;
+    min-width: 165px;
+    padding: 2px 32px 2px 8px;
     border-radius: 14px;
+    font-size: 17px;
   }
 }
 </style>
