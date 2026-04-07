@@ -25,19 +25,6 @@
     "2026-04-07": {
       "planSets": [
         {
-          "id": "id_mnonqnun_vnrsun",
-          "title": "New Plan",
-          "order": 0,
-          "items": [
-            {
-              "id": "id_mnonqnun_ub5nk1",
-              "content": "找工作",
-              "order": 0,
-              "tags": []
-            }
-          ]
-        },
-        {
           "id": "id_mnon90mn_pbgmrd",
           "title": "小声姐姐",
           "order": 1,
