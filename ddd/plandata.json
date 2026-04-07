@@ -1,0 +1,44 @@
+{
+  "tags": [
+    {
+      "id": "tag_urgent",
+      "name": "Urgent",
+      "color": "#e74c3c"
+    },
+    {
+      "id": "tag_important",
+      "name": "Important",
+      "color": "#e67e22"
+    },
+    {
+      "id": "tag_normal",
+      "name": "Normal",
+      "color": "#3498db"
+    },
+    {
+      "id": "tag_low",
+      "name": "Low",
+      "color": "#27ae60"
+    }
+  ],
+  "dates": {
+    "2026-04-07": {
+      "planSets": [
+        {
+          "id": "id_mnon90mn_pbgmrd",
+          "title": "New Plan",
+          "order": 0,
+          "items": [
+            {
+              "id": "id_mnon90mn_dja17t",
+              "content": "小声姐姐是最红最红的太阳",
+              "order": 0,
+              "tags": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "currentDate": "2026-04-07"
+}
